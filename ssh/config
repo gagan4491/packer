@@ -1,0 +1,8 @@
+Host gitlab.int.capoptix.com
+	StrictHostKeyChecking no
+	IdentityFile /root/.ssh/id_rsa_gitlab_4k
+
+Host *
+    StrictHostKeyChecking no
+    IdentityFile /root/.ssh/id_rsa_gitlab_4k
+    User root

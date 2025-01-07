@@ -1,0 +1,18 @@
+## Allow old Jenkins INT - 192.168.4.47 to connect to this server, user jenkins on Jenkins INT
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDVq3Y/pV71fAWzby4GOFuDhuXURXsJjtQmptvJijaCycGRxOAbliCX1b2Stif6Uv1/73keijwi4jCjmMzq7TCHvUzw3sB36F1r8U305ucAhDuLYXcYfoZuLyRqaMST5QFAf0OiYnQVrft6eaEEZ134CVMNaZbb8yw1RJA0bGrpN7EXzLgQRcOd3yZe7VWpWH7e6cNXuVIHmNy1f9mauvY+4YGEVZBswMykFhlffRFMAWQGYDXk0EFUf2qcJMeJbF/ROSClJ7h04UTL+XeWFf8kySLvK1a2Lh91TJzDnIGMfwGIbyvhb4ogaI7x+rXqWK119/kbzOrGE5VZqqaXzcfd JenkinsINT
+
+## Allow Jenkins P9 INT - 192.168.4.96 to connect to this server
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCrkkN89BT7zpWU2SoF0gx0KAPdhrgCipqQM8kaAKl//7sKdojHi/Q1JW9RS4tEZzRyiC7k6Fo9pmP8pT3+AVuUI0dk0lvvivnlXMmTbjRR6qKTjnQhN+mZHt0zYqa9xmJavMaPghP38YMfKCfRApxYJMRYzAod7B0XFGOth49N82wn8jqg2vWPrrGfrUKWg3ZyuYa1xeGk5mIt9YaxJqnrUSS/dfPRf1JZTIwwVzS0QxuoY4aG8eV7aW3niFMRY72Z2EaMAWWc5k1dEY3N+qr+D9EgHjNN/4ZCyImJpkfGkVBif3GYCbRTiiccTaoabz0gm8Qqbvh0ghTFgjrI2HFI2OvmUu5wgxSYyn2+sFTaEk58gkoyQrCLtKnMG7yaHuQmBiJ6hVD7KN/9815q/ecmmrVywOU1Y06bmKD2yj3KuEl/tp93QeaypyI1TUMS9D822PW1PmUc/xaaJWDLAMG9L75tyPbOolkbr/gkoHzboSwjXD1LOl+qj7pPULp5bJ0= jenkins-p9-int
+
+# Allow Bamboo INT - 192.168.4.55 can connect to this server - Jesus is not sure this is being usage but just in case, we are keeping it
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDChIcbL/Rg+K1ppa1WNtkIUFAl2ua95vcZ8JN+MoiaGmGjSF3qf+Sfc8g4a3JT4XwakD9VRS7kZIfmdJu1SEZhihpShZwMzZuApKsk/GZ+PAeH5w18opZqCF5rcbMaTqNWAIcjxRjRNtT2gm/b6dQCEOesSR23IbZMMEfAheqz+csFjGBDPjsRYkV/BJeSjFKSDmg8mtAvOZmCJawtUb5OOHc0lpIpB7mozxjxNdLy0r7nsZndD+4XZhdoB8ha2IRWw5r14JW7a3oVCp5v1DawVMBxJK+9rjrfP8N6cu6xJSmwFERGNb6bwsziCJYl9Ri0+MHK75oeTyvfHl9xW+Ud root@server
+
+# DevOps - Ansible INT - 192.168.4.72 - to be able to run Ansible and bootstrap installing software: PostgreSQL, Docker, Java, etc.
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDaB145ByK3SNX3WFOl2MzIUzXFz99OrJiOfstSXiAjAPB0rVPkm8KNXQ6AhUYnavvqDnUYFe8NtuchM1g2jDMo1sWB23RN56iH7Oid/RzAy1cTaxX07IXmg+qOOUF/GolaIE7q04IoJXZCjwVlHot6mTjLNsn2e7dL0e0W9edixJEdPyY4jRjUsUJPoTTJILIZ1jxqslos3uQr+8AtjbWvFkZrhh/fH8d2q1foZNsrThKXHhv5UBt6wBzb1a4y03mNvLCZUKttfUtw3WYKir6UeacsZdhMupiD1+O5xqzjBgaZAGuWLQEVLY9jcADTlEMtSdJUOCeLiA8TLgi3iXLXsLElmMxuoKISxly66NdK6AQRic2BkAMkLz2Pk2O9InfwnomBLLi5ewXzVmGR2VslHV3/6sjYVfSp7oBLwS6JjLLqXttwmOkaan1UfpEgLglcm4ATerbQyAWMsjc593Jc/saOmEeiai/w/plDnp2s1e8z4jgEq1DuLitb6NhWagMwZg54b0OuFC48uf6PrcBEZMrCQdVNtdclUD7hGlf4jC7OMKjRhfSaAjbFBIxUDi64RqpOsIvdZluzYIV4xQSX/yboAEc90vDJqjbVPYqtMoIpQ8us+0kbx2m5FKv4YXUWf9Q96RNMEMmWVWKYKEsRHYLCMBMCgEYlRz8wk6IdxQ== ansible__dev_ops_192_168_4_72
+
+#############################################################################################################
+##
+##  any extra end-user public key, should be added after these lines
+##
+#############################################################################################################
+
