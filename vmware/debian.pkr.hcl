@@ -19,8 +19,8 @@ packer {
 }
 
 source "vmware-iso" "debian" {
-  iso_url           = "https://cdimage.debian.org/debian-cd/12.8.0/arm64/iso-cd/debian-12.8.0-arm64-netinst.iso"
-  iso_checksum      = "sha256:b242a2c76375fb0b912afbc31bbf9a4c27276524daeea4e65e3d0da83eee9931"
+  iso_url           = "https://cdimage.debian.org/debian-cd/12.9.0/arm64/iso-cd/debian-12.9.0-arm64-netinst.iso"
+  iso_checksum      = "sha256:98b41e276dc41478c43298ee149f05ad446aa736273aaa653a39d64dab65a6a4"
   ssh_username      = "gagan"
   ssh_password      = "1234"
   ssh_timeout       = "5m"
@@ -98,62 +98,62 @@ build {
   }
 
   # Reboot the machine
-#   provisioner "shell" {
-#     inline = [
-#       "sudo reboot"
-#     ]
-#     expect_disconnect = true  # Handle disconnection due to reboot
-#   }
+ provisioner "shell" {
+   inline = [
+     "sudo reboot"
+   ]
+   expect_disconnect = true  # Handle disconnection due to reboot
+ }
 #
-#   # Wait for reboot to complete
-#   provisioner "shell" {
-#     inline       = [
-#       "echo 'Waiting for the system to reboot...'"
-#     ]
-#     pause_before = "30s"  # Adjust based on VM reboot time
-#   }
+ # Wait for reboot to complete
+ provisioner "shell" {
+   inline       = [
+     "echo 'Waiting for the system to reboot...'"
+   ]
+   pause_before = "30s"  # Adjust based on VM reboot time
+ }
 #
-#   # Run the post-reboot command
-#   provisioner "shell" {
-#     inline = [
-#       "ls -la",
-#       "sudo ansible-playbook -i /root/bootstrap-server/hostInfo.yml /root/bootstrap-server/bootstrap.yml"
-#     ]
-#     expect_disconnect = true
-#   }
-#   provisioner "shell" {
-#     inline       = [
-#       "echo 'Waiting for the system to reboot...'"
-#     ]
-#     pause_before = "30s"  # Adjust based on VM reboot time
-#   }
+ # Run the post-reboot command
+provisioner "shell" {
+  inline = [
+    "ls -la",
+    "sudo ansible-playbook -i /root/bootstrap-server/hostInfo.yml /root/bootstrap-server/bootstrap.yml"
+  ]
+  expect_disconnect = true
+}
+ provisioner "shell" {
+   inline       = [
+     "echo 'Waiting for the system to reboot...'"
+   ]
+   pause_before = "30s"  # Adjust based on VM reboot time
+ }
 #
-#   # Cleanup after execution
-#   provisioner "shell" {
-#     inline = [
-#       # Disable autologin after the script runs
-#       "sudo rm -f /etc/systemd/system/getty@tty1.service.d/override.conf",
-#       "sudo systemctl daemon-reload",
-#       "sudo systemctl restart getty@tty1",
+ # Cleanup after execution
+ provisioner "shell" {
+   inline = [
+     # Disable autologin after the script runs
+     "sudo rm -f /etc/systemd/system/getty@tty1.service.d/override.conf",
+     "sudo systemctl daemon-reload",
+     "sudo systemctl restart getty@tty1",
 #
-#       # Remove the script
-#       "rm -f /tmp/install.sh"
-#     ]
-#   }
+     # Remove the script
+     "rm -f /tmp/install.sh"
+   ]
+ }
 #
 #
-#   post-processor "shell-local" {
-#     inline = [
-#       "/Applications/VMware\\ Fusion.app/Contents/Library/vmware-vdiskmanager -r debian/disk.vmdk -t 0 debian/final.vmdk",
-#       "echo 'VMDK files successfully merged into final.vmdk'"
-#     ]
-#   }
-# #    post-processor "shell-local" {
-# #     inline = [
-# #       # Use vmware-vdiskmanager to convert the disk to a standalone VMDK
-# #       "'/System/Volumes/Data/Applications/VMware Fusion.app/Contents/Library/vmware-vdiskmanager' -r debian/debian.vmdk -t 0 output.vmdk"
-# #     ]
-# #   }
+post-processor "shell-local" {
+  inline = [
+    "/Applications/VMware\\ Fusion.app/Contents/Library/vmware-vdiskmanager -r debian/disk.vmdk -t 0 debian/final.vmdk",
+    "echo 'VMDK files successfully merged into final.vmdk'"
+  ]
+}
+###    post-processor "shell-local" {
+###     inline = [
+###       # Use vmware-vdiskmanager to convert the disk to a standalone VMDK
+###       "'/System/Volumes/Data/Applications/VMware\\ Fusion.app/Contents/Library/vmware-vdiskmanager' -r debian/debian.vmdk -t 0 output.vmdk"
+###     ]
+###   }
 }
 
 
