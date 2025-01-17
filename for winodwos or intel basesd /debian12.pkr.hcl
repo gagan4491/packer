@@ -21,8 +21,8 @@ source "vmware-iso" "debian12" {
   http_directory    = "http"
   headless          = true
 
-  cpus              = 2
-  memory            = 2048
+  cpus              = 4
+  memory            = 6048
   disk_size         = 20480
 
   vmx_data = {
