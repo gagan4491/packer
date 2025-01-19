@@ -2,5 +2,6 @@
 cd vmware 
 ```
 packer init debian.pkr.hcl
-rm -rf debian | time packer build debian.pkr.hcl
+
+rm -rf debian | time PACKER_LOG=1 packer build debian.pkr.hcl
 ```
