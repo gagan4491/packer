@@ -46,7 +46,7 @@ source "vmware-iso" "debian" {
   memory               = 6048
   cpus                 = 4
   disk_size            = 40480
-  vm_name              = "Debian 12.8(arm64)"
+  vm_name              = "debian-12.8"
   network_adapter_type = "e1000e"
   output_directory     = "debian"
   usb                  = true
@@ -93,7 +93,7 @@ build {
       "sudo chmod 600 /root/.ssh/id_rsa_gitlab_4k",
       "sudo chmod 644 /root/.ssh/id_rsa_gitlab_4k.pub",
       "sudo chmod +x /tmp/install.sh",
-      "sudo /tmp/install.sh"
+##  "sudo /tmp/install.sh"
     ]
   }
 
@@ -114,13 +114,13 @@ build {
  }
 #
  # Run the post-reboot command
-provisioner "shell" {
-  inline = [
-    "ls -la",
-    "sudo ansible-playbook -i /root/bootstrap-server/hostInfo.yml /root/bootstrap-server/bootstrap.yml"
-  ]
-  expect_disconnect = true
-}
+######provisioner "shell" {
+######  inline = [
+######    "ls -la",
+######    "sudo ansible-playbook -i /root/bootstrap-server/hostInfo.yml /root/bootstrap-server/bootstrap.yml"
+######  ]
+######  expect_disconnect = true
+######}
  provisioner "shell" {
    inline       = [
      "echo 'Waiting for the system to reboot...'"
@@ -142,6 +142,18 @@ provisioner "shell" {
  }
 #
 #
+   provisioner "file" {
+    source      = "../setStaticip.sh"
+    destination = "/tmp/setStaticip.sh"
+  }
+
+  provisioner "shell" {
+    inline = [
+     "sudo chmod +x /tmp/setStaticip.sh",
+     "sudo /tmp/setStaticip.sh"
+    ]
+  }
+
 post-processor "shell-local" {
   inline = [
     "/Applications/VMware\\ Fusion.app/Contents/Library/vmware-vdiskmanager -r debian/disk.vmdk -t 0 debian/final.vmdk",

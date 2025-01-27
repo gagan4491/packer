@@ -52,10 +52,11 @@ git clone git@gitlab.int.capoptix.com:p9/devops/bootstrap-server.git
 cd bootstrap-server
 git checkout packer
 git pull
+exit 1
 
 # Retrieve IP and last octet
 echo "Fetching IP address and last octet..."
-IP=$(hostname -I | awk '{print $1}')
+IP='$(hostname -I | awk '{print $1}')'
 
 if [[ -z "$IP" ]]; then
   echo "Error: Could not fetch IP address. Exiting..."

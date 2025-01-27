@@ -92,7 +92,7 @@ provisioner "file" {
       "sudo chmod 600 /root/.ssh/id_rsa_gitlab_4k",
       "sudo chmod 644 /root/.ssh/id_rsa_gitlab_4k.pub",
       "sudo chmod +x /tmp/install.sh",
-      "sudo /tmp/install.sh"
+//       "sudo /tmp/install.sh"
     ]
   }
 
@@ -113,13 +113,13 @@ provisioner "file" {
  }
 #
  # Run the post-reboot command
- provisioner "shell" {
-   inline = [
-     "ls -la",
-     "sudo ansible-playbook -i /root/bootstrap-server/hostInfo.yml /root/bootstrap-server/bootstrap.yml"
-   ]
-   expect_disconnect = true
- }
+ #####provisioner "shell" {
+ #####  inline = [
+ #####    "ls -la",
+ #####    "sudo ansible-playbook -i /root/bootstrap-server/hostInfo.yml /root/bootstrap-server/bootstrap.yml"
+ #####  ]
+ #####  expect_disconnect = true
+ #####}
  provisioner "shell" {
    inline       = [
      "echo 'Waiting for the system to reboot...'"
@@ -138,11 +138,23 @@ provisioner "file" {
      # Remove the script
      "rm -f /tmp/install.sh"
    ]
- }
+}
+   provisioner "file" {
+    source      = "setStaticip.sh"
+    destination = "/tmp/setStaticip.sh"
+  }
+
+  provisioner "shell" {
+    inline = [
+     "sudo chmod +x /tmp/setStaticip.sh",
+     "sudo /tmp/setStaticip.sh"
+    ]
+  }
+
 
 
 }
 
-
+###sed -i 's/ethernet0.connectiontype = "nat"/ethernet0.connectiontype = "bridged"/' "output-vm/packer-debian12.vmx"
 
 
